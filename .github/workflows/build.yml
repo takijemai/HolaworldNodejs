@@ -30,5 +30,4 @@ jobs:
         with:
           name: test-results
           path: ./coverage/test.results.xml
-           path: |
-            ./coverage/
+           path: | ./coverage/
