@@ -19,7 +19,10 @@ jobs:
         run: npm install
 
       - name: Test
-        uses: mattallty/jest-github-action@v1
+        run: npm run test-jenkins
+
+      - name: Test
+        uses: willcaul/jest-github-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
