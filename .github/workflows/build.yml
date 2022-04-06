@@ -32,6 +32,6 @@ jobs:
         if: success() || failure()
         with:
           name: test-results
-          path: ./coverage/test.results.xml
+          path: test.results.xml
           path: |
             ./coverage/
