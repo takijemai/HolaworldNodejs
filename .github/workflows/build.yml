@@ -25,13 +25,12 @@ jobs:
         with:
           test-command: 'npm run coverage-jenkins'
 
-
       - uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
           name: test-results
-          path: 
+          path:
             - ./coverage/test.results.xml
-           
-            - |              
-            ./coverage/
+
+            - |
+              ./coverage/
