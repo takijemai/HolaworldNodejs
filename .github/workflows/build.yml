@@ -25,6 +25,16 @@ jobs:
         with:
           test-command: 'npm run coverage-jenkins'
 
+      - name: Save Code Linting Report JSON
+        run: npm run lint:json
+        continue-on-error: true
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@1.2.0
+        with:
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          report-json: './coverage/eslint-result.json'
+
       - uses: actions/upload-artifact@v2
         if: success() || failure()
         with:
