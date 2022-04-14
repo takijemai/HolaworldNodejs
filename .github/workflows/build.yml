@@ -32,8 +32,8 @@ jobs:
       - name: Annotate Code Linting Results
         uses: ataylorme/eslint-annotate-action@1.2.0
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          report-json: './coverage/eslint-result.json'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          report-json: ./coverage/eslint-result.json
 
       - uses: actions/upload-artifact@v2
         if: success() || failure()
