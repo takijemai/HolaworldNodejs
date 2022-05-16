@@ -15,15 +15,15 @@ jobs:
           known_hosts: 'un-valor-para-que-no-de-error'
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{'34.133.69.210'}} >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H ${{'104.198.22.83'}} >> ~/.ssh/known_hosts
 
       - name: Deploy
         run: |
-          ssh ubuntu@${{'34.133.69.210'}} "if [ ! -d 'nodeapp' ]; then \
+          ssh ubuntu@${{'104.198.22.83'}} "if [ ! -d 'nodeapp' ]; then \
               git clone https://github.com/ualcnsa/nodeapp.git; \ 
             else \
               cd nodeapp && git stash && git fetch --all && git reset --hard origin/master && git pull origin master; \
             fi"
-          ssh ubuntu@${{'34.133.69.210'}} "if pgrep node; then forever stopall; fi"
-          ssh ubuntu@${{'34.133.69.210'}} "cd nodeapp && npm install"
-          ssh ubuntu@${{'34.133.69.210'}} "cd nodeapp && forever start src/main.js"
+          ssh ubuntu@${{'104.198.22.83'}} "if pgrep node; then forever stopall; fi"
+          ssh ubuntu@${{'104.198.22.83'}} "cd nodeapp && npm install"
+          ssh ubuntu@${{'104.198.22.83'}} "cd nodeapp && forever start src/main.js"
