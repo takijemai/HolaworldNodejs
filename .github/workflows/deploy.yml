@@ -15,7 +15,7 @@ jobs:
           known_hosts: 'un-valor-para-que-no-de-error'
 
       - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ 104.198.22.83 }} >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H ${{secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy
         run: |
@@ -24,6 +24,6 @@ jobs:
             else \
               cd nodeapp && git stash && git fetch --all && git reset --hard origin/master && git pull origin master; \
             fi"
-          ssh ubuntu@${{ secrets.SSH_HOST }} "if pgrep node; then forever stopall; fi"
-          ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp && npm install"
-          ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp && forever start src/main.js"
+          ssh ubuntu@${{ 104.198.22.83 }} "if pgrep node; then forever stopall; fi"
+          ssh ubuntu@${{ 104.198.22.83 }} "cd nodeapp && npm install"
+          ssh ubuntu@${{ 104.198.22.83 }} "cd nodeapp && forever start src/main.js"
